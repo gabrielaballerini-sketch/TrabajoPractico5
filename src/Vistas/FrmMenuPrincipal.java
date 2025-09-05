@@ -38,6 +38,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMBuscarTelefonoApellido = new javax.swing.JMenuItem();
         jCiudades = new javax.swing.JMenu();
+        agregarCiudad = new javax.swing.JMenuItem();
         jSalir = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -104,6 +105,15 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jDirectorioBuscarCliente);
 
         jCiudades.setText("Ciudades");
+        jCiudades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCiudadesActionPerformed(evt);
+            }
+        });
+
+        agregarCiudad.setText("Agregar Ciudad");
+        jCiudades.add(agregarCiudad);
+
         jMenuBar1.add(jCiudades);
 
         jSalir.setText("Salir");
@@ -129,19 +139,39 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBuscarActionPerformed
-        // TODO add your handling code here:
+      jDesktop.removeAll();
+      jDesktop.repaint();
+      BuscarCliente buscarcliente=new BuscarCliente();
+      buscarcliente.setVisible(true);
+      jDesktop.add(buscarcliente);
+      jDesktop.moveToFront(buscarcliente);
     }//GEN-LAST:event_jMBuscarActionPerformed
 
     private void jMBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBorrarActionPerformed
-        // TODO add your handling code here:
+      jDesktop.removeAll();
+      jDesktop.repaint();
+      BorrarCliente borrarcliente=new BorrarCliente();
+      borrarcliente.setVisible(true);
+      jDesktop.add(borrarcliente);
+      jDesktop.moveToFront(borrarcliente);
     }//GEN-LAST:event_jMBorrarActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+      jDesktop.removeAll();
+      jDesktop.repaint();
+      BuscarClienteCiudad buscarclienteciudad=new BuscarClienteCiudad();
+      buscarclienteciudad.setVisible(true);
+      jDesktop.add(buscarclienteciudad);
+      jDesktop.moveToFront(buscarclienteciudad);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMBuscarTelefonoApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBuscarTelefonoApellidoActionPerformed
-        // TODO add your handling code here:
+      jDesktop.removeAll();
+      jDesktop.repaint();
+      BuscarTelefonoApellido buscarclientetelefono=new BuscarTelefonoApellido();
+      buscarclientetelefono.setVisible(true);
+      jDesktop.add(buscarclientetelefono);
+      jDesktop.moveToFront(buscarclientetelefono);
     }//GEN-LAST:event_jMBuscarTelefonoApellidoActionPerformed
 
     private void jMAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAgregarActionPerformed
@@ -156,6 +186,15 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
       jDesktop.moveToFront(agregarcliente);
       
     }//GEN-LAST:event_jMAgregarActionPerformed
+
+    private void jCiudadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCiudadesActionPerformed
+      jDesktop.removeAll();
+      jDesktop.repaint();
+      AgregarCiudades agregarciduades=new AgregarCiudades();
+      agregarciduades.setVisible(true);
+      jDesktop.add(agregarciduades);
+      jDesktop.moveToFront(agregarciduades);
+    }//GEN-LAST:event_jCiudadesActionPerformed
 
    
     
@@ -195,6 +234,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem agregarCiudad;
     private javax.swing.JMenu jCiudades;
     private javax.swing.JMenu jCliente;
     private javax.swing.JDesktopPane jDesktop;
