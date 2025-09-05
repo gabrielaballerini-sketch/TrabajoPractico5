@@ -38,11 +38,22 @@ public class TrabajoPractico5 {
         
         
          
+        
+         System.out.println("Contacto");
+         
          System.out.println(directorio1.buscarContacto(158789664L));
+         
+         System.out.println("Telefono");
          
          System.out.println(directorio1.buscarTelefono("Duarte"));
          
+         System.out.println("Contacto");
+         
          System.out.println(directorio1.buscarContactos("San Luis"));
+         
+     
+         
+         
         
         
         
