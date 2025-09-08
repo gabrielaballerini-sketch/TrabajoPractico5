@@ -133,7 +133,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="txtDomicilio" alignment="1" min="-2" pref="173" max="-2" attributes="0"/>
-                                  <Component id="JjcbCiudad" min="-2" pref="173" max="-2" attributes="0"/>
+                                  <Component id="JCiudad" min="-2" pref="173" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -162,7 +162,7 @@
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="JjcbCiudad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JCiudad" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -216,6 +216,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDni">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="none"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNombre">
             </Component>
@@ -223,7 +226,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtDomicilio">
             </Component>
-            <Component class="javax.swing.JComboBox" name="JjcbCiudad">
+            <Component class="javax.swing.JComboBox" name="JCiudad">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -306,6 +309,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnSalirCliente">
           <Properties>

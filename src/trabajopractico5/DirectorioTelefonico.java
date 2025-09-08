@@ -43,6 +43,18 @@ public class DirectorioTelefonico {
     
     
     
+    
+    public TreeMap<Long, Contacto> mostrarDirectorioTelefonico(){
+    
+    
+            
+            return directorio;
+    
+    }
+    
+    
+    
+    
     public void agregarContacto(Long tel, Contacto contacto){
         
        directorio.put(tel, contacto);

@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Capotes
@@ -38,7 +40,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtDomicilio = new javax.swing.JTextField();
-        JjcbCiudad = new javax.swing.JComboBox<>();
+        JCiudad = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
@@ -65,7 +67,13 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel6.setText("Domicilio");
 
-        JjcbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                none(evt);
+            }
+        });
+
+        JCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,7 +98,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JjcbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
@@ -111,7 +119,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(JjcbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -149,6 +157,11 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         jLabel1.setText("Agregar Cliente");
 
         btnGuardarCliente.setText("Guardar");
+        btnGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarClienteActionPerformed(evt);
+            }
+        });
 
         btnSalirCliente.setText("Salir");
 
@@ -208,9 +221,78 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void none(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_none
+       
+        
+         
+                   
+        
+        
+        
+        
+         
+    }//GEN-LAST:event_none
+
+    private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
+      
+        
+        if (txtDni.getText().isEmpty() || txtDomicilio.getText().isEmpty() || txtNombre.getText().isEmpty()||txtTelefono.getText().isEmpty()||txtApellido.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe ingresar datos..");
+        return;
+        
+         }
+   
+            try{
+            
+            
+            int dni  =Integer.parseInt( txtDni.getText());
+            
+            
+            }catch(NumberFormatException e){
+            
+            
+            JOptionPane.showMessageDialog(null, "El DNI debe ser un numero");
+            
+            txtDni.setText("");
+            
+            }
+            
+                        
+            String domicilio=txtDomicilio.getText();
+            
+            String nombre=txtNombre.getText();
+            
+            String apellido=txtApellido.getText();
+            
+            
+            if (!nombre.matches("[a-zA-Z ]+" )|| !apellido.matches("[a-zA-Z ]+")) {
+                JOptionPane.showMessageDialog(null, "El nombre deben ser solo caracteres");
+                txtNombre.setText(" ");
+                return; //para detener la ejecucion .. sirveeee
+            }
+            
+            
+            try{
+            
+            long telefono=Long.parseLong(txtTelefono.getText());
+            
+            }catch(NumberFormatException e){
+            
+            
+            JOptionPane.showMessageDialog(null,"El telefono debe ser un numero");
+            
+             txtTelefono.setText("");
+                    return;
+            }
+            
+            
+        
+        
+    }//GEN-LAST:event_btnGuardarClienteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> JjcbCiudad;
+    private javax.swing.JComboBox<String> JCiudad;
     private javax.swing.JButton btnGuardarCliente;
     private javax.swing.JButton btnSalirCliente;
     private javax.swing.JLabel jLabel1;

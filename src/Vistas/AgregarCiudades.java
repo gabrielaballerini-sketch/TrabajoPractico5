@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sutara
@@ -41,6 +43,11 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
         jLabel2.setText("Nombre Ciudad");
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
 
@@ -98,6 +105,21 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+     
+        
+       
+        
+    ArrayList<String> ciudades=new ArrayList<>(); 
+    
+     
+   ciudades.add(txtCiudad.getText());
+   
+  // ver si seria un combobox
+        
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

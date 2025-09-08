@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import trabajopractico5.DirectorioTelefonico;
+
 /**
  *
  * @author Capotes
@@ -112,11 +114,25 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
 
         agregarCiudad.setText("Agregar Ciudad");
+        agregarCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarCiudadActionPerformed(evt);
+            }
+        });
         jCiudades.add(agregarCiudad);
 
         jMenuBar1.add(jCiudades);
 
         jSalir.setText("Salir");
+        jSalir.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jSalirMenuSelected(evt);
+            }
+        });
         jMenuBar1.add(jSalir);
 
         setJMenuBar(jMenuBar1);
@@ -189,11 +205,26 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void jCiudadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCiudadesActionPerformed
       jDesktop.removeAll();
       jDesktop.repaint();
-      AgregarCiudades agregarciduades=new AgregarCiudades();
-      agregarciduades.setVisible(true);
-      jDesktop.add(agregarciduades);
-      jDesktop.moveToFront(agregarciduades);
+      AgregarCiudades agregarciudades=new AgregarCiudades();
+      agregarciudades.setVisible(true);
+      jDesktop.add(agregarciudades);
+      jDesktop.moveToFront(agregarciudades);
     }//GEN-LAST:event_jCiudadesActionPerformed
+
+    private void agregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCiudadActionPerformed
+       jDesktop.removeAll();
+      jDesktop.repaint();
+      AgregarCiudades agregarciudades=new AgregarCiudades();
+      agregarciudades.setVisible(true);
+      jDesktop.add(agregarciudades);
+      jDesktop.moveToFront(agregarciudades);
+                                            
+
+    }//GEN-LAST:event_agregarCiudadActionPerformed
+
+    private void jSalirMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jSalirMenuSelected
+        System.exit(0);
+    }//GEN-LAST:event_jSalirMenuSelected
 
    
     
@@ -229,6 +260,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             public void run() {
                 new FrmMenuPrincipal().setVisible(true);
             }
+            
+            
+            DirectorioTelefonico directorioTelefonico=new DirectorioTelefonico();
+            
+            
         });
     }
 
