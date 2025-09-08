@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import trabajopractico5.DirectorioTelefonico;
 
 /**
@@ -12,7 +14,7 @@ import trabajopractico5.DirectorioTelefonico;
  * @author Capotes
  */
 public class FrmMenuPrincipal extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form FrmMenuPrincipal
      */
@@ -283,4 +285,17 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jSalir;
     // End of variables declaration//GEN-END:variables
+/*
+public static ArrayList<String> cidudades(String ciudadesadd){
+    ArrayList<String> listaCidudades = new ArrayList();
+    if(ciudadesadd.isEmpty()){
+    JOptionPane.showMessageDialog(null, "Por favor, agrege una ciudad");
+    }else{
+    listaCidudades.add(ciudadesadd);
+    }
+        
+    
+return listaCidudades;
+}
+*/
 }

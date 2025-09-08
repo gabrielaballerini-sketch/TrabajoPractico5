@@ -5,14 +5,17 @@
  */
 package Vistas;
 
+
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import trabajopractico5.DirectorioTelefonico;
 
 /**
  *
  * @author Sutara
  */
 public class AgregarCiudades extends javax.swing.JInternalFrame {
-
+     DirectorioTelefonico directorio= new DirectorioTelefonico();
     /**
      * Creates new form AgregarCiudades
      */
@@ -107,14 +110,12 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-     
-        
-       
-        
-    ArrayList<String> ciudades=new ArrayList<>(); 
+     String ciudades = txtCiudad.getText();
+    directorio.buscarContactos(ciudades);
+     txtCiudad.setText("");
+     JOptionPane.showMessageDialog(null, "Ciudad cargada!");
     
      
-   ciudades.add(txtCiudad.getText());
    
   // ver si seria un combobox
         

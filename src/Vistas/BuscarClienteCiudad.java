@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Vistas;
+
+import trabajopractico5.DirectorioTelefonico;
 
 /**
  *
@@ -11,11 +14,16 @@ package Vistas;
  */
 public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
 
+    
+    
+   DirectorioTelefonico directorio= new DirectorioTelefonico();
     /**
      * Creates new form BuscarClienteCiudad
      */
     public BuscarClienteCiudad() {
         initComponents();
+        
+        cargarCiudades();
     }
 
     /**
@@ -29,7 +37,7 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboCiudades = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -38,7 +46,11 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Ciudades:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboCiudades.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboCiudadesItemStateChanged(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Buscar Clientes de Directorio por Ciudad");
@@ -94,7 +106,7 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(comboCiudades, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel2)))
@@ -112,7 +124,7 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboCiudades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(176, 176, 176))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
@@ -143,14 +155,29 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboCiudadesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboCiudadesItemStateChanged
+      
+       
+    }//GEN-LAST:event_comboCiudadesItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalirBuscarXCiudad;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> comboCiudades;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+ public void  cargarCiudades(){
+     
+       comboCiudades.removeAllItems();
+       
+     for (String ciudad : directorio.obtenerCiudadesUnicas()) {
+        comboCiudades.addItem(ciudad);
+    }
+ 
+ }
+
 }

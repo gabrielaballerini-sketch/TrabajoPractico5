@@ -170,6 +170,15 @@ public class DirectorioTelefonico {
       
       
       }
-    
-    
+      
+      
+     public Set<String> obtenerCiudadesUnicas() {
+    Set<String> ciudades = new HashSet<>();
+    for (Contacto contacto : directorio.values()) {
+        ciudades.add(contacto.getCiudad());
+    }
+    return ciudades;
+    }
 }
+    
+
