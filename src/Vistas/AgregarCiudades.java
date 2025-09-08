@@ -111,7 +111,7 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
      String ciudades = txtCiudad.getText();
-    directorio.buscarContactos(ciudades);
+        directorio.agregarCiudad(ciudades);
      txtCiudad.setText("");
      JOptionPane.showMessageDialog(null, "Ciudad cargada!");
     

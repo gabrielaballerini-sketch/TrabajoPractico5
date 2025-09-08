@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  *
@@ -39,6 +40,8 @@ public class DirectorioTelefonico {
     
     
     TreeMap<Long,Contacto> directorio=new TreeMap<>();
+    TreeSet<String> ciudades =new TreeSet();
+    TreeSet<String> apellidos = new TreeSet();
     
     
     
@@ -121,7 +124,14 @@ public class DirectorioTelefonico {
     
     
     }
-         
+      
+      //VOY A CREAR UN METODO PARA CARGAR CIUDAD AL COMBOX DE LA CLASE BUSCARCLIENTECIUDAD
+      public TreeSet<String> agregarCiudad(String ciudadAgregada){
+     
+         ciudades.add(ciudadAgregada);
+          
+      return ciudades;
+      }
       
       
       
@@ -173,7 +183,7 @@ public class DirectorioTelefonico {
       
       
      public Set<String> obtenerCiudadesUnicas() {
-    Set<String> ciudades = new HashSet<>();
+    //Set<String> ciudades = new HashSet<>();
     for (Contacto contacto : directorio.values()) {
         ciudades.add(contacto.getCiudad());
     }

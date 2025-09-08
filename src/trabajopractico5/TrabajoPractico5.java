@@ -35,8 +35,11 @@ public class TrabajoPractico5 {
          directorio1.agregarContacto(15665544L, contacto3);
          directorio1.agregarContacto(15443322L, contacto4);
          directorio1.agregarContacto(15332211L, contacto5);
-        
-        
+        //ESTE FOR AGREGA LAS CIUDADES CREADAS POR LA GABYY DE LOS CONTACTOS
+        for (Contacto aux :directorio1.mostrarDirectorioTelefonico().values() ) {
+            directorio1.agregarCiudad(aux.getCiudad());
+            
+        }
          
         
          System.out.println("Contacto");
