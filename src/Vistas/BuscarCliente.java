@@ -216,7 +216,7 @@ private void mostrarDetallesContacto() {
     if (telefonoSeleccionado != null) {
         Contacto contacto = FrmMenuPrincipal.directorio.buscarContacto(telefonoSeleccionado);
         if (contacto != null) {
-            txtDniBuscarCliente.setText(String.valueOf(contacto.getDni()));
+            txtDniBuscarCliente.setText(contacto.getDni());
             txtNomBuscarCliente.setText(contacto.getNombre());
             txtApeBuscarCliente.setText(contacto.getApellido());
             txtCiudadBuscarCliente.setText(contacto.getCiudad());

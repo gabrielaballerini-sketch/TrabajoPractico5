@@ -25,20 +25,19 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     
     public FrmMenuPrincipal() {
         initComponents();
+        //NO TOQUEN ESTO POR QUE SINO NO SE VE LA VENTANA DE AGREGAR CIUDAD 
+        agregarCiudad.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        agregarCiudadActionPerformed(evt);
+    }
+});
         
         directorio=new DirectorioTelefonico();
         
         
     }
     
-    private void agregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        jDesktop.removeAll();   // ahora sí lo reconoce
-        jDesktop.repaint();
-        AgregarCiudades agregarciudades = new AgregarCiudades();
-        jDesktop.add(agregarciudades);
-        agregarciudades.setVisible(true);
-        jDesktop.moveToFront(agregarciudades);
-    }
+   
 
     
     
@@ -161,6 +160,14 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     private void agregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        jDesktop.removeAll();   // ahora sí lo reconoce
+        jDesktop.repaint();
+        AgregarCiudades agregarciudades = new AgregarCiudades();
+        jDesktop.add(agregarciudades);
+        agregarciudades.setVisible(true);
+        jDesktop.moveToFront(agregarciudades);
+    }
     private void jMBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBuscarActionPerformed
       jDesktop.removeAll();
       jDesktop.repaint();
