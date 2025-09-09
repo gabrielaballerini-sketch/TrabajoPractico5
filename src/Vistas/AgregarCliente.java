@@ -5,7 +5,10 @@
  */
 package Vistas;
 
+import java.util.Set;
 import javax.swing.JOptionPane;
+import trabajopractico5.Contacto;
+import trabajopractico5.DirectorioTelefonico;
 
 /**
  *
@@ -18,8 +21,50 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
      */
     public AgregarCliente() {
         initComponents();
+        
+        llenarComboCiudad();
     }
 
+    
+    // Cuando ejecutamos el constructor Agregr cliente no tiene nada cargado y queda vacio
+    
+    public void setVisible(boolean opcion){
+    
+    
+    super.setVisible(opcion);
+    
+    if (opcion){
+    
+  llenarComboCiudad();
+    
+    }
+    
+    }
+    
+    
+    
+    private void llenarComboCiudad(){
+        
+        // probando 123
+    
+     JCiudad.removeAllItems();
+     
+     JCiudad.addItem("Seleccione una ciudad");
+     
+     
+  Set<String> ciudades=FrmMenuPrincipal.directorio.obtenerCiudades();
+  
+  for(String ciudad : ciudades){
+             
+         
+         JCiudad.addItem(ciudad);
+     
+    
+    
+    }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,8 +117,6 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 none(evt);
             }
         });
-
-        JCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -235,56 +278,87 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
 
     private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
       
-        
-        if (txtDni.getText().isEmpty() || txtDomicilio.getText().isEmpty() || txtNombre.getText().isEmpty()||txtTelefono.getText().isEmpty()||txtApellido.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Debe ingresar datos..");
-        return;
-        
-         }
    
-            try{
+
+    String dniTexto = txtDni.getText().trim();
+    String domicilio = txtDomicilio.getText().trim();
+    String nombre = txtNombre.getText().trim();
+    String apellido = txtApellido.getText().trim();
+    String telefonoTexto = txtTelefono.getText().trim();
+    
+    
+    
+    
+    
+    
+    
+    if (dniTexto.isEmpty() || domicilio.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || telefonoTexto.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Debe ingresar todos los datos.");
+        return; 
+    }
+    
+  
+    int dni;
+    long telefono;
+    
+    
+    //EN EL CODIGO EL DNI ERA UN STRING..VALIDAMOS QUE SEA UN NUMERO PERO LUEGO LO PONEMOS STRING
+    
+
+    try {
+        dni = Integer.parseInt(dniTexto.trim());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "El DNI debe ser un número.");
+        txtDni.setText(""); // Limpiar campo del DNI.
+        return; // Salir del método si la conversión falla.
+    }
+    
+ 
+    try {
+         telefono=Long.parseLong(txtTelefono.getText().trim());
+        
+        
+        
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "El teléfono debe ser un número.");
+        txtTelefono.setText(""); 
+        return;
+    }
+    
+   
+    if (!nombre.matches("[a-zA-Z ]+") || !apellido.matches("[a-zA-Z ]+")) {
+        JOptionPane.showMessageDialog(null, "El nombre y el apellido deben contener solo letras.");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        return;
+    }
+   
+  
+    
+      //public Contacto(String dni, String nombre, String apellido, String ciudad, String direccion) {
+
+   // PONEMOS DNI COMO STRING OTRA VEZ
+   
+
+   // modificando UBICACION DIRECCION X CIUDAD
+   
+      Contacto nuevo = new Contacto(String.valueOf(dni), nombre, apellido, (String) JCiudad.getSelectedItem(),domicilio);
+    
+      
+    FrmMenuPrincipal.directorio.agregarContacto(telefono, nuevo);
             
+            llenarComboCiudad();
             
-            int dni  =Integer.parseInt( txtDni.getText());
-            
-            
-            }catch(NumberFormatException e){
-            
-            
-            JOptionPane.showMessageDialog(null, "El DNI debe ser un numero");
-            
-            txtDni.setText("");
-            
-            }
-            
-                        
-            String domicilio=txtDomicilio.getText();
-            
-            String nombre=txtNombre.getText();
-            
-            String apellido=txtApellido.getText();
-            
-            
-            if (!nombre.matches("[a-zA-Z ]+" )|| !apellido.matches("[a-zA-Z ]+")) {
-                JOptionPane.showMessageDialog(null, "El nombre deben ser solo caracteres");
-                txtNombre.setText(" ");
-                return; //para detener la ejecucion .. sirveeee
-            }
-            
-            
-            try{
-            
-            long telefono=Long.parseLong(txtTelefono.getText());
-            
-            }catch(NumberFormatException e){
-            
-            
-            JOptionPane.showMessageDialog(null,"El telefono debe ser un numero");
-            
-             txtTelefono.setText("");
-                    return;
-            }
-            
+              JOptionPane.showMessageDialog(null, "Cliente guardado con éxito!");
+         
+              
+              txtDni.setText("");
+              txtNombre.setText("");
+              txtApellido.setText("");
+              txtTelefono.setText("");
+              txtDomicilio.setText("");
+              
+              
             
         
         

@@ -39,9 +39,9 @@ public class DirectorioTelefonico {
     
     
     
-    TreeMap<Long,Contacto> directorio=new TreeMap<>();
+     TreeMap<Long,Contacto> directorio=new TreeMap<>();
     TreeSet<String> ciudades =new TreeSet();
-    TreeSet<String> apellidos = new TreeSet();
+     TreeSet<String> apellidos = new TreeSet();
     
     
     
@@ -60,11 +60,22 @@ public class DirectorioTelefonico {
     
     public void agregarContacto(Long tel, Contacto contacto){
         
-       directorio.put(tel, contacto);
+        if (directorio.containsKey(tel)){
+        
+            System.out.println("El contacto ya existe");
+        }else{
+        
+        
+         directorio.put(tel, contacto);
+          ciudades.add(contacto.getCiudad());
+         
+        }
+        
+        
+      
     
-       ciudades.add(contacto.getCiudad());
-       apellidos.add(contacto.getApellido());
-    }
+     
+          }
     
    
     
@@ -126,6 +137,10 @@ public class DirectorioTelefonico {
     
     }
       
+      // SOY  GABY, VOY A SACAR ESTE METODO Y PROBAR OTRO.. 
+      
+      
+      /*
       //VOY A CREAR UN METODO PARA CARGAR CIUDAD AL COMBOX DE LA CLASE BUSCARCLIENTECIUDAD
       public TreeSet<String> agregarCiudad(String ciudadAgregada){
      
@@ -133,6 +148,23 @@ public class DirectorioTelefonico {
           
       return ciudades;
       }
+      */
+      
+      // GABY, CREANDO METODO PARA OBTENER LAS CIUDADES
+      
+      public Set<String> obtenerCiudades (){
+      
+      return ciudades;
+      }
+      
+      //Gaby, CREANDO METODO AGREGAR CIUDADES
+      
+      public void agregarCiudades(String ciudad){
+      
+      ciudades.add(ciudad);
+      }
+      
+      
       
       
       
@@ -182,14 +214,6 @@ public class DirectorioTelefonico {
       
       }
       
-      
-     public Set<String> obtenerCiudadesUnicas() {
-    //Set<String> ciudades = new HashSet<>();
-    for (Contacto contacto : directorio.values()) {
-        ciudades.add(contacto.getCiudad());
-    }
-    return ciudades;
-    }
 }
     
 

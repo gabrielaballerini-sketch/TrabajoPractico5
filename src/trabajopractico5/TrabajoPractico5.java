@@ -65,6 +65,10 @@ public class TrabajoPractico5 {
          
          System.out.println(directorio1.buscarContactos("San Luis"));
          
+         
+         System.out.println("Obtener ciudades");
+         System.out.println(directorio1.obtenerCiudades());
+         
      
          
          
