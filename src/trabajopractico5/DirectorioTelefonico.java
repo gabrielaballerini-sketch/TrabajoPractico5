@@ -50,7 +50,7 @@ public class DirectorioTelefonico {
     public TreeMap<Long, Contacto> mostrarDirectorioTelefonico(){
     
     
-            
+         
             return directorio;
     
     }
@@ -62,7 +62,8 @@ public class DirectorioTelefonico {
         
        directorio.put(tel, contacto);
     
-    
+       ciudades.add(contacto.getCiudad());
+       apellidos.add(contacto.getApellido());
     }
     
    

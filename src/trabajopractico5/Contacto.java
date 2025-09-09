@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author Gabriela Ballerini
  */
-class Contacto {
+public class Contacto {
     
     
     

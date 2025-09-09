@@ -6,7 +6,9 @@
 
 package Vistas;
 
+import java.util.Map;
 import trabajopractico5.DirectorioTelefonico;
+import trabajopractico5.Contacto;
 
 /**
  *
@@ -21,9 +23,10 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
      * Creates new form BuscarClienteCiudad
      */
     public BuscarClienteCiudad() {
+       
         initComponents();
-        
-        cargarCiudades();
+         cargarCiudades();
+       
     }
 
     /**
@@ -172,11 +175,18 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
  public void  cargarCiudades(){
      
-       comboCiudades.removeAllItems();
+       //comboCiudades.removeAllItems();
        
-     for (String ciudad : directorio.obtenerCiudadesUnicas()) {
-        comboCiudades.addItem(ciudad);
-    }
+    // for (String ciudad : directorio.obtenerCiudadesUnicas()) {
+       // comboCiudades.addItem(ciudad);
+    //}
+    
+     for (Map.Entry<Long, Contacto> en : directorio.mostrarDirectorioTelefonico().entrySet()) {
+         Long key = en.getKey();
+         Contacto val = en.getValue();
+         comboCiudades.addItem(val.getCiudad());
+         
+     }
  
  }
 
