@@ -31,6 +31,7 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
         
         // Pedimos foco al abrir el internal frame para que puedas escribir en txtCiudad
         this.addInternalFrameListener(new InternalFrameAdapter() {
+            @Override
             public void internalFrameOpened(InternalFrameEvent e) {
                 txtCiudad.requestFocusInWindow();
             }

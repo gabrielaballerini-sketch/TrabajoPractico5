@@ -5,17 +5,30 @@
  */
 package Vistas;
 
+import javax.swing.DefaultListModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import trabajopractico5.Contacto;
+
 /**
  *
  * @author Sutara
  */
 public class BuscarCliente extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form BuscarCliente
-     */
+    
     public BuscarCliente() {
         initComponents();
+        llenarListaTelefonos();
+        jList1.addListSelectionListener(new ListSelectionListener(){
+         @Override
+         public void valueChanged(ListSelectionEvent e){
+             if(!e.getValueIsAdjusting()){
+                 mostrarDetallesContacto();
+             }
+         }
+        
+       });
     }
 
     /**
@@ -40,8 +53,8 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         txtDniBuscarCliente = new javax.swing.JTextField();
         txtApeBuscarCliente = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        tztCiudadBuscarCliente = new javax.swing.JTextField();
+        txtNomBuscarCliente = new javax.swing.JTextField();
+        txtCiudadBuscarCliente = new javax.swing.JTextField();
         txtDomiBuscarCliente = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
@@ -103,8 +116,8 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
                                 .addGap(57, 57, 57)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtDomiBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(tztCiudadBuscarCliente)
-                                    .addComponent(jTextField3)
+                                    .addComponent(txtCiudadBuscarCliente)
+                                    .addComponent(txtNomBuscarCliente)
                                     .addComponent(txtApeBuscarCliente)
                                     .addComponent(txtDniBuscarCliente)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -133,11 +146,11 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNomBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(tztCiudadBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCiudadBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -178,14 +191,46 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<Long> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField txtApeBuscarCliente;
+    private javax.swing.JTextField txtCiudadBuscarCliente;
     private javax.swing.JTextField txtDniBuscarCliente;
     private javax.swing.JTextField txtDomiBuscarCliente;
+    private javax.swing.JTextField txtNomBuscarCliente;
     private javax.swing.JTextField txtTelBuscarCliente;
-    private javax.swing.JTextField tztCiudadBuscarCliente;
     // End of variables declaration//GEN-END:variables
+
+
+private void llenarListaTelefonos() {
+    DefaultListModel<Long> model = new DefaultListModel<>();
+    for (Long telefono : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().keySet()) {
+        model.addElement(telefono);
+    }
+    jList1.setModel(model);
+}
+
+private void mostrarDetallesContacto() {
+    Long telefonoSeleccionado = jList1.getSelectedValue();
+    if (telefonoSeleccionado != null) {
+        Contacto contacto = FrmMenuPrincipal.directorio.buscarContacto(telefonoSeleccionado);
+        if (contacto != null) {
+            txtDniBuscarCliente.setText(String.valueOf(contacto.getDni()));
+            txtNomBuscarCliente.setText(contacto.getNombre());
+            txtApeBuscarCliente.setText(contacto.getApellido());
+            txtCiudadBuscarCliente.setText(contacto.getCiudad());
+            txtDomiBuscarCliente.setText(contacto.getDireccion());
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
 }

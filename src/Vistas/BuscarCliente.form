@@ -65,8 +65,8 @@
                                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtDomiBuscarCliente" pref="210" max="32767" attributes="0"/>
-                                      <Component id="tztCiudadBuscarCliente" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtCiudadBuscarCliente" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtNomBuscarCliente" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtApeBuscarCliente" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtDniBuscarCliente" alignment="0" max="32767" attributes="0"/>
                                   </Group>
@@ -105,12 +105,12 @@
                           <EmptySpace pref="29" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNomBuscarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tztCiudadBuscarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCiudadBuscarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
@@ -156,7 +156,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Long&gt;"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -218,9 +218,9 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtApeBuscarCliente">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="txtNomBuscarCliente">
         </Component>
-        <Component class="javax.swing.JTextField" name="tztCiudadBuscarCliente">
+        <Component class="javax.swing.JTextField" name="txtCiudadBuscarCliente">
         </Component>
         <Component class="javax.swing.JTextField" name="txtDomiBuscarCliente">
         </Component>

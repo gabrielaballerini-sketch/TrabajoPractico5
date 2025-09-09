@@ -39,9 +39,9 @@ public class DirectorioTelefonico {
     
     
     
-     TreeMap<Long,Contacto> directorio=new TreeMap<>();
-    TreeSet<String> ciudades =new TreeSet();
-     TreeSet<String> apellidos = new TreeSet();
+     private TreeMap<Long,Contacto> directorio=new TreeMap<>();
+     public static TreeSet<String> ciudades =new TreeSet();
+     private TreeSet<String> apellidos = new TreeSet();
     
     
     
@@ -62,12 +62,12 @@ public class DirectorioTelefonico {
         
         if (directorio.containsKey(tel)){
         
-            System.out.println("El contacto ya existe");
+            System.out.println("El contacto ya existe en el directorio");
         }else{
-        
-        
-         directorio.put(tel, contacto);
+            
+          directorio.put(tel, contacto);
           ciudades.add(contacto.getCiudad());
+            System.out.println("Contacto agregado con exito");
          
         }
         
@@ -83,20 +83,20 @@ public class DirectorioTelefonico {
         
          Contacto contacto1 = null;
         
-        boolean existe=directorio.containsKey(telef);
+         boolean existe = directorio.containsKey(telef);
         
-        if (existe){
+         if (existe){
         
         
-        contacto1=directorio.get(telef);
+         contacto1=directorio.get(telef);
         
-        }else{
+        } else{
         
             System.out.println("No existe un contacto con ese numero");
         
         }
        
-        return contacto1;
+         return contacto1;
     
     
     }
@@ -105,10 +105,7 @@ public class DirectorioTelefonico {
       public Set<Long> buscarTelefono(String apellido){
           
           
-          
-         
-          
-          Set <Long> telefonos=new HashSet<>();
+          TreeSet <Long> telefonos=new TreeSet<>();
                   
                   
         for (Map.Entry<Long, Contacto> entry : directorio.entrySet()) {
@@ -117,7 +114,7 @@ public class DirectorioTelefonico {
             
             if (value.getApellido().equalsIgnoreCase(apellido)){
             
-          telefonos.add(key);
+               telefonos.add(key);
             
             }
             

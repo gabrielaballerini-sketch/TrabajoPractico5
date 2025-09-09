@@ -25,7 +25,7 @@ public class TrabajoPractico5 {
         
        Contacto contacto2=new Contacto("236984", "Santi", "Duarte", "Juana Koslay", "Los Duraznos 369 ");
          
-       Contacto contacto3=new Contacto("252562", "Lara", "Saavedra", "La Toma", "Los Jazmines 678 ");
+       Contacto contacto3=new Contacto("252562", "Lara", "Saavedra", "San Luis", "Los Jazmines 678 ");
           
        Contacto contacto4=new Contacto("269874", "Franco", "Martinez", "El Trapiche", "Los Peros 647 ");
                       

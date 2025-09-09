@@ -5,6 +5,9 @@
  */
 package Vistas;
 
+import static Vistas.FrmMenuPrincipal.ciudades;
+import static Vistas.FrmMenuPrincipal.directorio;
+import java.util.Map;
 import java.util.Set;
 import javax.swing.JOptionPane;
 import trabajopractico5.Contacto;
@@ -28,41 +31,41 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
     
     // Cuando ejecutamos el constructor Agregr cliente no tiene nada cargado y queda vacio
     
-    public void setVisible(boolean opcion){
+    //public void setVisible(boolean opcion){
     
     
-    super.setVisible(opcion);
+    //super.setVisible(opcion);
     
-    if (opcion){
+    //if (opcion){
     
-  llenarComboCiudad();
+  //llenarComboCiudad();
     
-    }
+    //}
     
-    }
+    //}
     
     
     
-    private void llenarComboCiudad(){
+    //private void llenarComboCiudad(){
         
         // probando 123
     
-     JCiudad.removeAllItems();
+     //JCiudad.removeAllItems();
      
-     JCiudad.addItem("Seleccione una ciudad");
+     //JCiudad.addItem("Seleccione una ciudad");
      
      
-  Set<String> ciudades=FrmMenuPrincipal.directorio.obtenerCiudades();
+      //Set<String> ciudades=FrmMenuPrincipal.ciudades;
   
-  for(String ciudad : ciudades){
+     //for(String ciudad : ciudades){
              
          
-         JCiudad.addItem(ciudad);
+        // JCiudad.addItem(ciudad);
      
     
     
-    }
-    }
+    //}
+   // }
     
     
     /**
@@ -385,4 +388,23 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+
+public void llenarComboCiudad(){
+    
+        JCiudad.removeAllItems();
+        JCiudad.addItem("Seleccione una ciudad");
+       for (String ciudad : directorio.obtenerCiudades()) {
+          
+           JCiudad.addItem(ciudad);
+       }
+   
+   } 
+
+
+
+
+
+
+
+
 }

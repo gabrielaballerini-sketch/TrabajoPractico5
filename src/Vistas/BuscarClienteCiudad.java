@@ -25,20 +25,20 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
      */
     public BuscarClienteCiudad() {
         
-    initComponents();
+         initComponents();
     
          cargarCiudades();
     
-       comboCiudades.removeAllItems();
+       //comboCiudades.removeAllItems();
        
-       comboCiudades.addItem("Seleccione una ciudad");
+       //comboCiudades.addItem("Seleccione una ciudad");
        
-       Set<String >ciudades=FrmMenuPrincipal.directorio.obtenerCiudades();
+       //Set<String >ciudades=FrmMenuPrincipal.directorio.obtenerCiudades();
        
-       for(String ciudad:ciudades){
+       //for(String ciudad:ciudades){
        
-       comboCiudades.addItem(ciudad);
-       }
+       //comboCiudades.addItem(ciudad);
+       //}
        
        
      
@@ -197,15 +197,16 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
        comboCiudades.addItem("Seleccione una ciudad");
        
         Set<String >ciudades=FrmMenuPrincipal.directorio.obtenerCiudades();
-       
+        if (ciudades == null || ciudades.isEmpty()) {
+        comboCiudades.addItem("No hay ciudades disponibles");
+        return; 
+          }
        
         for(String ciudad:ciudades ){
-        
-     
-       comboCiudades.addItem(ciudad);
-       }
-    
-         
+            if (ciudad != null && !ciudad.trim().isEmpty()) {
+                comboCiudades.addItem(ciudad.trim());
+            } 
+        } 
      }
  
  

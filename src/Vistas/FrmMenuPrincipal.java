@@ -6,9 +6,12 @@
 package Vistas;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeSet;
 import javax.swing.JOptionPane;
 import trabajopractico5.Contacto;
 import trabajopractico5.DirectorioTelefonico;
+import trabajopractico5.TrabajoPractico5;
 
 /**
  *
@@ -17,6 +20,7 @@ import trabajopractico5.DirectorioTelefonico;
 public class FrmMenuPrincipal extends javax.swing.JFrame {
  
     public static DirectorioTelefonico directorio;
+    public static TreeSet<String> ciudades =new TreeSet();
  
     
     public FrmMenuPrincipal() {
@@ -30,16 +34,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void agregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {                                               
         jDesktop.removeAll();   // ahora sí lo reconoce
         jDesktop.repaint();
-        
-        
-        
-        
         AgregarCiudades agregarciudades = new AgregarCiudades();
-         jDesktop.add(agregarciudades);
-        
+        jDesktop.add(agregarciudades);
         agregarciudades.setVisible(true);
-        
-       
         jDesktop.moveToFront(agregarciudades);
     }
 
@@ -76,7 +73,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         );
         jDesktopLayout.setVerticalGroup(
             jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 511, Short.MAX_VALUE)
+            .addGap(0, 566, Short.MAX_VALUE)
         );
 
         jCliente.setText("Clientes");
@@ -224,6 +221,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+        TrabajoPractico5.main(args);
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -295,4 +293,14 @@ public static ArrayList<String> cidudades(String ciudadesadd){
 return listaCidudades;
 }
 */
+   public void llenarCiudades(){
+       for (Map.Entry<Long, Contacto> en : directorio.mostrarDirectorioTelefonico().entrySet()) {
+           Long key = en.getKey();
+           Contacto val = en.getValue();
+           ciudades.add(val.getCiudad());
+       }
+   
+   } 
+    
+    
 }
