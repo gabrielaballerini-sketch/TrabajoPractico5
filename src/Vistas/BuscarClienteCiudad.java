@@ -27,11 +27,11 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
         
          initComponents();
          
-         modelo =new DefaultTableModel();
-         agregarLista();
+        modelo =new DefaultTableModel();
+         
          cargarCiudades();
-    
-       
+         armarCabeceraTabla();
+ 
     }
 
    
@@ -160,14 +160,8 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboCiudadesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboCiudadesItemStateChanged
-    String ciudad = (String) comboCiudades.getSelectedItem();
-          
-      
-    for (Map.Entry<Long,Contacto> aux : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
-    modelo.addRow(new Object[]{aux.getValue().getDni(),aux.getValue().getApellido(),aux.getValue().getNombre(),aux.getValue().getDireccion(),aux.getValue().getCiudad(),aux.getKey()});
-        }
-             
-             
+
+             llenarTabla();     
     }//GEN-LAST:event_comboCiudadesItemStateChanged
 
 
@@ -198,10 +192,11 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
             } 
         } 
      }
- public void agregarLista(){
- ArrayList <Object> mod = new ArrayList();
+
+ private void armarCabeceraTabla(){
+    ArrayList <Object> mod = new ArrayList();
     mod.add("DNI");
-    mod.add("Apellido");
+   mod.add("Apellido");
     mod.add("Nombre");
     mod.add("Direccion");
     mod.add("Ciudad");
@@ -210,6 +205,25 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
          modelo.addColumn(aux);
      }
      jTable1.setModel(modelo);
+}
+  
+ private void llenarTabla(){
+    borrarFilas();
+    String ciudad = (String) comboCiudades.getSelectedItem();
+        for (Map.Entry<Long,Contacto> aux : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
+            if(aux.getValue().getCiudad().equals(ciudad)){
+            modelo.addRow(new Object[]{aux.getValue().getDni(),aux.getValue().getApellido(),aux.getValue().getNombre(),aux.getValue().getDireccion(),aux.getValue().getCiudad(),aux.getKey()});
+      }  
+  }
+ 
+ }
+ 
+ private void borrarFilas(){
+     int numFilas= modelo.getRowCount() -1;
+     for (int i = numFilas; i >= 0; i--) {
+         modelo.removeRow( i );
+         
+     }
  }
  
  

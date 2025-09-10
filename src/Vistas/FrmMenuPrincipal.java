@@ -27,7 +27,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         initComponents();
         //NO TOQUEN ESTO POR QUE SINO NO SE VE LA VENTANA DE AGREGAR CIUDAD 
         agregarCiudad.addActionListener(new java.awt.event.ActionListener() {
-    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
         agregarCiudadActionPerformed(evt);
     }
 });
@@ -257,10 +257,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 
                
                
-        
-                        
-                
-                
                 
                 new FrmMenuPrincipal().setVisible(true);
             }
@@ -287,19 +283,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jSalir;
     // End of variables declaration//GEN-END:variables
-/*
-public static ArrayList<String> cidudades(String ciudadesadd){
-    ArrayList<String> listaCidudades = new ArrayList();
-    if(ciudadesadd.isEmpty()){
-    JOptionPane.showMessageDialog(null, "Por favor, agrege una ciudad");
-    }else{
-    listaCidudades.add(ciudadesadd);
-    }
-        
-    
-return listaCidudades;
-}
-*/
+
    public void llenarCiudades(){
        for (Map.Entry<Long, Contacto> en : directorio.mostrarDirectorioTelefonico().entrySet()) {
            Long key = en.getKey();

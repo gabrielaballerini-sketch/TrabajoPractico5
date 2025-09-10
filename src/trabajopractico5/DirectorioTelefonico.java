@@ -67,15 +67,11 @@ public class DirectorioTelefonico {
             
           directorio.put(tel, contacto);
           ciudades.add(contacto.getCiudad());
-            System.out.println("Contacto agregado con exito");
+          System.out.println("Contacto agregado con exito");
          
         }
         
-        
-      
-    
-     
-          }
+     }
     
    
     

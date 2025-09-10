@@ -24,46 +24,8 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
      */
     public AgregarCliente() {
         initComponents();
-        
         llenarComboCiudad();
     }
-
-    
-    // Cuando ejecutamos el constructor Agregr cliente no tiene nada cargado y queda vacio
-    
-    //public void setVisible(boolean opcion){
-    
-    
-    //super.setVisible(opcion);
-    
-    //if (opcion){
-    
-  //llenarComboCiudad();
-    
-    //}
-    
-    //}
-    
-    
-    
-    //private void llenarComboCiudad(){
-        
-        // probando 123
-    
-     //JCiudad.removeAllItems();
-     
-     //JCiudad.addItem("Seleccione una ciudad");
-     
-     
-      //Set<String> ciudades=FrmMenuPrincipal.ciudades;
-  
-     //for(String ciudad : ciudades){
-             
-         
-        // JCiudad.addItem(ciudad);
-     
-    
-    
     //}
    // }
     
@@ -268,31 +230,16 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void none(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_none
-       
-        
-         
-                   
-        
-        
-        
-        
-         
+  
     }//GEN-LAST:event_none
 
     private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
       
-   
-
     String dniTexto = txtDni.getText().trim();
     String domicilio = txtDomicilio.getText().trim();
     String nombre = txtNombre.getText().trim();
     String apellido = txtApellido.getText().trim();
     String telefonoTexto = txtTelefono.getText().trim();
-    
-    
-    
-    
-    
     
     
     if (dniTexto.isEmpty() || domicilio.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || telefonoTexto.isEmpty()) {
@@ -345,25 +292,18 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
 
    // modificando UBICACION DIRECCION X CIUDAD
    
-      Contacto nuevo = new Contacto(String.valueOf(dni), nombre, apellido, (String) JCiudad.getSelectedItem(),domicilio);
+    Contacto nuevo = new Contacto(String.valueOf(dni), nombre, apellido, (String) JCiudad.getSelectedItem(),domicilio);
     
       
     FrmMenuPrincipal.directorio.agregarContacto(telefono, nuevo);
             
-            llenarComboCiudad();
-            
               JOptionPane.showMessageDialog(null, "Cliente guardado con éxito!");
-         
-              
+          
               txtDni.setText("");
               txtNombre.setText("");
               txtApellido.setText("");
               txtTelefono.setText("");
               txtDomicilio.setText("");
-              
-              
-            
-        
         
     }//GEN-LAST:event_btnGuardarClienteActionPerformed
 
@@ -391,8 +331,8 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
 
 public void llenarComboCiudad(){
     
-        JCiudad.removeAllItems();
-        JCiudad.addItem("Seleccione una ciudad");
+       JCiudad.removeAllItems();
+       JCiudad.addItem("Seleccione una ciudad");
        for (String ciudad : directorio.obtenerCiudades()) {
           
            JCiudad.addItem(ciudad);

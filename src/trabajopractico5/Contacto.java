@@ -13,16 +13,11 @@ import java.util.Objects;
  */
 public class Contacto {
     
-    
-    
-    
     private String dni;
     private String nombre;
     private String apellido;
     private String ciudad;
     private String direccion;
-    
-    
     
     
     public Contacto(String dni, String nombre, String apellido, String ciudad, String direccion) {
@@ -105,10 +100,5 @@ public class Contacto {
         }
         return true;
     }
-    
-    
-    
-    
-    
-    
+  
 }
