@@ -21,6 +21,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
  
     public static DirectorioTelefonico directorio;
     public static TreeSet<String> ciudades =new TreeSet();
+    public static TreeSet<String> apellido=new TreeSet();
  
     
     public FrmMenuPrincipal() {
@@ -291,7 +292,25 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
            ciudades.add(val.getCiudad());
        }
    
-   } 
+   }
+   
+   public void llenarClientesApellido(){
+       
+       
+        for (Map.Entry<Long, Contacto> en : directorio.mostrarDirectorioTelefonico().entrySet()) {
+           Long key = en.getKey();
+           String apellido1 = en.getValue().getApellido();
+                   
+           apellido.add(apellido1);
+       }
+   
+   }
+   
+   
+   
+   }
+   
+   
     
     
-}
+

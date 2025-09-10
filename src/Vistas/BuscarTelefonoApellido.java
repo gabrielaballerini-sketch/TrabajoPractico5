@@ -5,6 +5,18 @@
  */
 package Vistas;
 
+import java.util.ArrayList;
+import java.util.Map;
+import javax.swing.table.DefaultTableModel;
+import trabajopractico5.Contacto;
+
+
+      import javax.swing.JTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.DefaultListModel;
+
+
 /**
  *
  * @author Sutara
@@ -13,11 +25,36 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form BuscarTelefonoApellido
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
      */
+     private DefaultTableModel modelo;
+     
+     private DefaultListModel modeloLista;
+    
+    
     public BuscarTelefonoApellido() {
         initComponents();
+        
+         modelo =new DefaultTableModel();
+         
+         modeloLista=new DefaultListModel();
+        
+      //   buscarTel();
+         
+            armarCabeceraTabla();
+ 
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +78,12 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
         jLabel1.setText("Buscar Teléfono por Apellido");
 
         jLabel2.setText("Apellido:");
+
+        txtApeBuscarTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApeBuscarTelefonoKeyTyped(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,6 +174,61 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtApeBuscarTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApeBuscarTelefonoKeyTyped
+       
+  
+      
+      
+          
+         
+        
+        
+        
+// ... En un método donde creas tus componentes ...
+JTextField txtSoloNumeros = new JTextField();
+
+txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
+    @Override
+    public void keyTyped(KeyEvent e) {
+      
+                filtrarLista();
+            }
+        });
+
+        // Initial list population
+        filtrarLista();
+    }
+
+    private void filtrarLista() {
+        String textoBusqueda = txtApeBuscarTelefono.getText();
+        modeloLista.clear(); 
+
+        
+        if (textoBusqueda.isEmpty()) {
+            
+            
+            
+            
+            
+            for (Map.Entry<Long, Contacto> entry : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
+                Long key = entry.getKey();
+                Contacto value = entry.getValue();
+                
+                modeloLista.addElement(value.getNombre() + value.getApellido());
+                
+                
+                               
+            }
+            
+                             
+               
+            }
+          
+        
+
+      
+    }//GEN-LAST:event_txtApeBuscarTelefonoKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalirBuscarTelefono;
@@ -143,4 +241,84 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtApeBuscarTelefono;
     // End of variables declaration//GEN-END:variables
+
+
+
+// CONTINUAR EL METODO.. 
+
+//llenarClientesApellido
+    
+  /*  
+    public void buscarTel(){
+
+    
+
+
+            for (Map.Entry<Long, Contacto> en : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
+                Object key = en.getKey();
+                Object value = en.getValue();
+                
+                
+                if(en.getValue().getApellido().equalsIgnoreCase(txtApeBuscarTelefono)){
+               
+                
+                
+                }
+                
+                
+                
+            }
+
 }
+
+*/
+
+ private void armarCabeceraTabla(){
+    ArrayList <Object> mod = new ArrayList();
+    mod.add("DNI");
+   mod.add("Apellido");
+    mod.add("Nombre");
+    mod.add("Direccion");
+    mod.add("Ciudad");
+    mod.add("Telefono");
+     for (Object aux : mod) {
+         modelo.addColumn(aux);
+     }
+     jTable1.setModel(modelo);
+}
+ 
+ 
+  
+ private void llenarTabla(){
+    borrarFilas();
+    String ciudad = (String) txtApeBuscarTelefono.getSelectedText();
+        for (Map.Entry<Long,Contacto> aux : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
+            if(aux.getValue().getCiudad().equals(ciudad)){
+                       
+                modelo.addRow(new Object[]{aux.getValue().getDni(),aux.getValue().getApellido(),aux.getValue().getNombre(),aux.getValue().getDireccion(),aux.getValue().getCiudad(),aux.getKey()});
+                
+                
+                
+                
+                
+      }  
+  }
+ 
+ }
+ 
+ private void borrarFilas(){
+     int numFilas= modelo.getRowCount() -1;
+     for (int i = numFilas; i >= 0; i--) {
+         modelo.removeRow( i );
+         
+     }
+ }
+ 
+ 
+ 
+ 
+ 
+  
+
+}
+
