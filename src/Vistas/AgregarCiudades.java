@@ -66,6 +66,8 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setText("Agregar Ciudad");
 
@@ -80,6 +82,11 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -166,6 +173,11 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
 
         
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+           dispose(); 
+    }//GEN-LAST:event_btnSalirActionPerformed
 
    
 

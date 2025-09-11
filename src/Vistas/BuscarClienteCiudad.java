@@ -47,6 +47,8 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         btnSalirBuscarXCiudad = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Ciudades:");
 
@@ -96,6 +98,11 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
         }
 
         btnSalirBuscarXCiudad.setText("Salir");
+        btnSalirBuscarXCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirBuscarXCiudadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,6 +170,12 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
 
              llenarTabla();     
     }//GEN-LAST:event_comboCiudadesItemStateChanged
+
+    private void btnSalirBuscarXCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirBuscarXCiudadActionPerformed
+        // TODO add your handling code here:
+        
+          dispose(); 
+    }//GEN-LAST:event_btnSalirBuscarXCiudadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -36,7 +36,7 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
      * 
      * 
      */
-     private DefaultTableModel modelo;
+     private DefaultTableModel modelo ;
      
      private DefaultListModel modeloLista;
     
@@ -69,10 +69,12 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtApeBuscarTelefono = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtContactos = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         btnSalirBuscarTelefono = new javax.swing.JButton();
+
+        setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Buscar Teléfono por Apellido");
@@ -80,12 +82,15 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
         jLabel2.setText("Apellido:");
 
         txtApeBuscarTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtApeBuscarTelefonoKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtApeBuscarTelefonoKeyTyped(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtContactos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -104,11 +109,21 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtContactos);
 
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jList1);
 
         btnSalirBuscarTelefono.setText("Salir");
+        btnSalirBuscarTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirBuscarTelefonoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -185,7 +200,7 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
         
         
 // ... En un método donde creas tus componentes ...
-JTextField txtSoloNumeros = new JTextField();
+/*JTextField txtSoloNumeros = new JTextField();
 
 txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
     @Override
@@ -222,12 +237,53 @@ txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
             
                              
                
-            }
+            }*/
           
         
 
       
     }//GEN-LAST:event_txtApeBuscarTelefonoKeyTyped
+
+    private void txtApeBuscarTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApeBuscarTelefonoKeyReleased
+        // TODO add your handling code here:
+       borrarLista();
+       
+        for ( Map.Entry <Long, Contacto> cont : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
+            
+            if(cont.getValue().getApellido().startsWith(txtApeBuscarTelefono.getText()))
+            
+            modeloLista.addElement(cont.getValue().getApellido());
+
+         
+            jList1.setModel(modeloLista);
+       }
+            
+      
+    }//GEN-LAST:event_txtApeBuscarTelefonoKeyReleased
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        // TODO add your handling code here:
+        borrarFilas();
+        
+        String dato = jList1.getSelectedValue();
+        
+         for ( Map.Entry <Long, Contacto> cont : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
+            
+            if(cont.getValue().getApellido().equalsIgnoreCase(dato)){
+                
+                modelo.addRow(new Object[]{cont.getValue().getDni(),cont.getValue().getApellido(),
+                    cont.getValue().getNombre(),cont.getValue().getDireccion(),cont.getValue().getCiudad(),cont.getKey()});
+            }
+         }
+         jtContactos.setModel(modelo);
+        
+        
+    }//GEN-LAST:event_jList1MouseClicked
+
+    private void btnSalirBuscarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirBuscarTelefonoActionPerformed
+        
+        dispose();
+    }//GEN-LAST:event_btnSalirBuscarTelefonoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -238,7 +294,7 @@ txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtContactos;
     private javax.swing.JTextField txtApeBuscarTelefono;
     // End of variables declaration//GEN-END:variables
 
@@ -284,7 +340,7 @@ txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
      for (Object aux : mod) {
          modelo.addColumn(aux);
      }
-     jTable1.setModel(modelo);
+     jtContactos.setModel(modelo);
 }
  
  
@@ -314,7 +370,13 @@ txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
      }
  }
  
- 
+ private void borrarLista(){
+     int numFilas= modeloLista.getSize();
+     for (int i = numFilas; i >= 0; i--) {
+         modeloLista.removeAllElements();
+         
+     }
+ }
  
  
  

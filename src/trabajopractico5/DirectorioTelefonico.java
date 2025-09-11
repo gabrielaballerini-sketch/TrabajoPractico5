@@ -39,7 +39,7 @@ public class DirectorioTelefonico {
     
     
     
-     private TreeMap<Long,Contacto> directorio=new TreeMap<>();
+     private  TreeMap<Long,Contacto> directorio=new TreeMap<>();
      public static TreeSet<String> ciudades =new TreeSet();
      private TreeSet<String> apellidos = new TreeSet();
     

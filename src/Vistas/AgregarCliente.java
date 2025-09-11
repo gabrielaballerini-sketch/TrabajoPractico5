@@ -58,6 +58,8 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         btnGuardarCliente = new javax.swing.JButton();
         btnSalirCliente = new javax.swing.JButton();
 
+        setClosable(true);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
@@ -172,6 +174,11 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         });
 
         btnSalirCliente.setText("Salir");
+        btnSalirCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -306,6 +313,11 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
               txtDomicilio.setText("");
         
     }//GEN-LAST:event_btnGuardarClienteActionPerformed
+
+    private void btnSalirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirClienteActionPerformed
+        // TODO add your handling code here:
+           dispose(); 
+    }//GEN-LAST:event_btnSalirClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

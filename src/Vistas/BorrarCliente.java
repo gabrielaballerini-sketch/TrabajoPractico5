@@ -46,6 +46,8 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDeBorrar = new javax.swing.JTable();
 
+        setClosable(true);
+
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Borrar Cliente");
 
@@ -65,6 +67,11 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
         });
 
         btnSalirBorrarCliente.setText("Salir");
+        btnSalirBorrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirBorrarClienteActionPerformed(evt);
+            }
+        });
 
         tablaDeBorrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,6 +174,11 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
  
     txtDniBorrar.setText(""); 
     }//GEN-LAST:event_btnBorrarClienteActionPerformed
+
+    private void btnSalirBorrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirBorrarClienteActionPerformed
+        // TODO add your handling code here
+           dispose(); 
+    }//GEN-LAST:event_btnSalirBorrarClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
