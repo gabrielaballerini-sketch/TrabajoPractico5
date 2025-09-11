@@ -5,17 +5,27 @@
  */
 package Vistas;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import trabajopractico5.Contacto;
+
 /**
  *
  * @author Sutara
  */
 public class BorrarCliente extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form BorrarCliente
-     */
+     private DefaultTableModel modelo;
     public BorrarCliente() {
         initComponents();
+        
+      modelo= new DefaultTableModel();  
+      armarCabeceraTabla();
+      cargarTabla();
+      
     }
 
     /**
@@ -34,7 +44,7 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
         btnBorrarCliente = new javax.swing.JButton();
         btnSalirBorrarCliente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaDeBorrar = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Borrar Cliente");
@@ -48,10 +58,15 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
         });
 
         btnBorrarCliente.setText("Borrar Cliente/s");
+        btnBorrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarClienteActionPerformed(evt);
+            }
+        });
 
         btnSalirBorrarCliente.setText("Salir");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaDeBorrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -62,7 +77,7 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaDeBorrar);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,8 +139,34 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDniBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniBorrarActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtDniBorrarActionPerformed
+
+    private void btnBorrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarClienteActionPerformed
+        String dniIngresado = txtDniBorrar.getText();
+            // VERIFICACION SI ESTA SE INGRESARON DATOS 
+    if (dniIngresado.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Ingrese un DNI para borrar.");
+        txtDniBorrar.setText("");
+        return;
+    }
+            // Las buenas practicas me dictan usar iteretor parar borrar  SOY TOMI
+    Iterator<Map.Entry<Long, Contacto>> iterador = FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet().iterator();
+    
+    
+    while (iterador.hasNext()) {
+        Map.Entry<Long, Contacto> entry = iterador.next();
+        if (entry.getValue().getDni().equalsIgnoreCase(dniIngresado)) {
+            iterador.remove();
+            
+            break; 
+        }
+    }
+    
+    JOptionPane.showMessageDialog(null, "El DNI se ha borrado con éxito.");
+ 
+    txtDniBorrar.setText(""); 
+    }//GEN-LAST:event_btnBorrarClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -135,7 +176,30 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaDeBorrar;
     private javax.swing.JTextField txtDniBorrar;
     // End of variables declaration//GEN-END:variables
+
+public void armarCabeceraTabla(){
+ArrayList<Object> tablaDeInformacion= new ArrayList();
+    tablaDeInformacion.add("DNI");
+    tablaDeInformacion.add("Apellido");
+    tablaDeInformacion.add("Nombre");
+    tablaDeInformacion.add("Direccion");
+    tablaDeInformacion.add("Ciudad");
+    tablaDeInformacion.add("Telefono");
+    
+    for (Object aux : tablaDeInformacion) {
+        modelo.addColumn(aux);
+    }
+    tablaDeBorrar.setModel(modelo);
+    
+}
+public void cargarTabla(){
+ for (Map.Entry<Long,Contacto> aux : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
+            
+        modelo.addRow(new Object[]{aux.getValue().getDni(),aux.getValue().getApellido(),aux.getValue().getNombre(),aux.getValue().getDireccion(),aux.getValue().getCiudad(),aux.getKey()});
+  }
+}
+
 }
