@@ -49,11 +49,6 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     
     
-  
-       
-       
-       
-    
     
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -146,13 +141,6 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
      String ciudad = txtCiudad.getText().trim();
      
-     
-     
-     
-     
-     
-       // GABY MODIFICANDO METODO 
-        
        if(ciudad.isEmpty()){
            JOptionPane.showMessageDialog(this, "Debe ingresar el nombre de una ciudad");
            return;
@@ -164,18 +152,11 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
        
        txtCiudad.setText("");
        
-       
-
-       
-       
-       
        }
-
-        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+       
            dispose(); 
     }//GEN-LAST:event_btnSalirActionPerformed
 

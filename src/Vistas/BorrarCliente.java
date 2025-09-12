@@ -157,7 +157,7 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
         txtDniBorrar.setText("");
         return;
     }
-            // Las buenas practicas me dictan usar iteretor parar borrar  SOY TOMI
+            
     Iterator<Map.Entry<Long, Contacto>> iterador = FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet().iterator();
     
     

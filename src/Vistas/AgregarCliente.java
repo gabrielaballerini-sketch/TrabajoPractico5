@@ -290,14 +290,6 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         return;
     }
    
-  
-    
-      //public Contacto(String dni, String nombre, String apellido, String ciudad, String direccion) {
-
-   // PONEMOS DNI COMO STRING OTRA VEZ
-   
-
-   // modificando UBICACION DIRECCION X CIUDAD
    
     Contacto nuevo = new Contacto(String.valueOf(dni), nombre, apellido, (String) JCiudad.getSelectedItem(),domicilio);
     

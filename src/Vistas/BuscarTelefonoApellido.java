@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import trabajopractico5.Contacto;
 
 
-      import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultListModel;
@@ -24,17 +23,8 @@ import javax.swing.DefaultListModel;
 public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form BuscarTelefonoApellido
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
+    
+    
      */
      private DefaultTableModel modelo ;
      
@@ -48,9 +38,7 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
          
          modeloLista=new DefaultListModel();
         
-      //   buscarTel();
-         
-            armarCabeceraTabla();
+         armarCabeceraTabla();
  
     }
 
@@ -191,61 +179,10 @@ public class BuscarTelefonoApellido extends javax.swing.JInternalFrame {
 
     private void txtApeBuscarTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApeBuscarTelefonoKeyTyped
        
-  
-      
-      
-          
-         
-        
-        
-        
-// ... En un método donde creas tus componentes ...
-/*JTextField txtSoloNumeros = new JTextField();
-
-txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
-    @Override
-    public void keyTyped(KeyEvent e) {
-      
-                filtrarLista();
-            }
-        });
-
-        // Initial list population
-        filtrarLista();
-    }
-
-    private void filtrarLista() {
-        String textoBusqueda = txtApeBuscarTelefono.getText();
-        modeloLista.clear(); 
-
-        
-        if (textoBusqueda.isEmpty()) {
-            
-            
-            
-            
-            
-            for (Map.Entry<Long, Contacto> entry : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
-                Long key = entry.getKey();
-                Contacto value = entry.getValue();
-                
-                modeloLista.addElement(value.getNombre() + value.getApellido());
-                
-                
-                               
-            }
-            
-                             
-               
-            }*/
-          
-        
-
-      
     }//GEN-LAST:event_txtApeBuscarTelefonoKeyTyped
 
     private void txtApeBuscarTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApeBuscarTelefonoKeyReleased
-        // TODO add your handling code here:
+       
        borrarLista();
        
         for ( Map.Entry <Long, Contacto> cont : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
@@ -262,7 +199,7 @@ txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
     }//GEN-LAST:event_txtApeBuscarTelefonoKeyReleased
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-        // TODO add your handling code here:
+        
         borrarFilas();
         
         String dato = jList1.getSelectedValue();
@@ -299,36 +236,6 @@ txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
     // End of variables declaration//GEN-END:variables
 
 
-
-// CONTINUAR EL METODO.. 
-
-//llenarClientesApellido
-    
-  /*  
-    public void buscarTel(){
-
-    
-
-
-            for (Map.Entry<Long, Contacto> en : FrmMenuPrincipal.directorio.mostrarDirectorioTelefonico().entrySet()) {
-                Object key = en.getKey();
-                Object value = en.getValue();
-                
-                
-                if(en.getValue().getApellido().equalsIgnoreCase(txtApeBuscarTelefono)){
-               
-                
-                
-                }
-                
-                
-                
-            }
-
-}
-
-*/
-
  private void armarCabeceraTabla(){
     ArrayList <Object> mod = new ArrayList();
     mod.add("DNI");
@@ -353,10 +260,6 @@ txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
                        
                 modelo.addRow(new Object[]{aux.getValue().getDni(),aux.getValue().getApellido(),aux.getValue().getNombre(),aux.getValue().getDireccion(),aux.getValue().getCiudad(),aux.getKey()});
                 
-                
-                
-                
-                
       }  
   }
  
@@ -379,8 +282,5 @@ txtApeBuscarTelefono.addKeyListener(new KeyAdapter() {
  }
  
  
- 
-  
-
 }
 

@@ -38,10 +38,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         
     }
     
-   
-
-    
-    
+  
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -162,7 +159,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
      private void agregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        jDesktop.removeAll();   // ahora sí lo reconoce
+        jDesktop.removeAll();  
         jDesktop.repaint();
         AgregarCiudades agregarciudades = new AgregarCiudades();
         jDesktop.add(agregarciudades);
@@ -208,12 +205,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void jMAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAgregarActionPerformed
       jDesktop.removeAll();
       jDesktop.repaint();
-      
       AgregarCliente agregarcliente=new AgregarCliente();
-      
       agregarcliente.setVisible(true);
       jDesktop.add(agregarcliente);
-      
       jDesktop.moveToFront(agregarcliente);
       
     }//GEN-LAST:event_jMAgregarActionPerformed

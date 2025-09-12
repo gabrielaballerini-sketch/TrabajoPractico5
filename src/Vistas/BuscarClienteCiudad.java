@@ -9,10 +9,7 @@ package Vistas;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
-import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 import trabajopractico5.DirectorioTelefonico;
 import trabajopractico5.Contacto;
 
@@ -172,8 +169,7 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_comboCiudadesItemStateChanged
 
     private void btnSalirBuscarXCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirBuscarXCiudadActionPerformed
-        // TODO add your handling code here:
-        
+
           dispose(); 
     }//GEN-LAST:event_btnSalirBuscarXCiudadActionPerformed
 
@@ -207,9 +203,9 @@ public class BuscarClienteCiudad extends javax.swing.JInternalFrame {
      }
 
  private void armarCabeceraTabla(){
-    ArrayList <Object> mod = new ArrayList();
+ ArrayList <Object> mod = new ArrayList();
     mod.add("DNI");
-   mod.add("Apellido");
+    mod.add("Apellido");
     mod.add("Nombre");
     mod.add("Direccion");
     mod.add("Ciudad");
